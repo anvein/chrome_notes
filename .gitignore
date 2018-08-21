@@ -1,0 +1,13 @@
+# ненужные файлы и папки IDE и операционных систем
+.DS_Store
+site_checker_*.*
+.idea/
+*.sublime-workspace
+.buildpath
+.project
+.settings
+nbproject
+Thumbs.db
+.~lock.*
+*.conf
+ubuntu-*.log
