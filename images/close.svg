@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Close</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Configuration" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-343.000000, -18.000000)">
+        <g id="Close" transform="translate(330.000000, 5.000000)">
+            <rect id="Rectangle-2" fill-opacity="0" fill="#ff2e2e" x="0" y="0" width="40" height="40"></rect>
+            <polygon id="Shape" fill="#ff2e2e" opacity="1" points="26.9824109 14.3708333 25.5841698 13 19.9912055 18.4833333 14.3982411 13 13 14.3708333 18.5929644 19.8541667 13 25.3375 14.3982411 26.7083333 19.9912055 21.225 25.5841698 26.7083333 26.9824109 25.3375 21.3894466 19.8541667"></polygon>
+        </g>
+    </g>
+</svg>
