@@ -9,49 +9,33 @@
 	</head>
 	<body>
 		<div id="mainContainer">
-			<div id="scriptsList">
+			<div id="scriptsList" class="screen">
 				<div class="header">
 					<div class="title">
 						JS-Runner
 					</div>
 					<div id="addScript" class="close"></div>
 				</div>
+				<div id="tagsList"></div>
 
-				<div class="list-container">
-					<div data-run="script1" class="scripts-list_item" >
-						<span class="title">Скрипт 1</span>
-						<!--<span class="edit">edit</span>-->
-						<span class="delete"></span>
-					</div>
-
-					<div data-run="script1" class="scripts-list_item" >
-						<span class="title">Скрипт 1</span>
-						<!--<span class="edit">edit</span>-->
-						<span class="delete"></span>
-					</div>
-				</div>
+				<div id="listContainer"></div>
 			</div>
 
-			<div id="addingScript">
+			<div id="addingScript" class="screen">
 				<div class="header">
 					<div id="addingScriptSave" class="save"></div>
 
 					<div class="title">
-						Script
+						<input id="scriptName" placeholder="Название скрипта">
 					</div>
 
 					<div id="addingScriptClose" class="close"></div>
 				</div>
 
-				<textarea class="textarea"></textarea>
+				<textarea id="scriptCode" class="textarea"></textarea>
+				<input id="scriptTag" placeholder="#тег">
+				<input id="scriptId">
 			</div>
-
-
-
-
-
-
-
 		</div>
 	</body>
 </html>
