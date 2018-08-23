@@ -92,6 +92,7 @@ $(document).ready(function() {
             scriptsList.empty();
 
             fillList();
+            fillTags();
         });
     }
 
@@ -131,6 +132,7 @@ $(document).ready(function() {
             scriptsList.empty();
 
             fillList();
+            fillTags();
         });
     }
 
@@ -166,7 +168,46 @@ $(document).ready(function() {
 
             addingScreen.addClass("active");
         });
+    }
 
+    /**
+     * Копировать текст заметки
+     */
+    function actionCopyTextScript(e)
+    {
+        chrome.storage.sync.get('scripts', function (obj) {
+            var scripts;
+
+            if (obj.scripts != null) {
+                scripts = obj.scripts;
+            } else {
+                alert('Ошибка! Скрипт не найден..');
+                return;
+            }
+
+            var id = e.target.parentNode.getAttribute('data-id');
+
+            if (scripts[id] === null) {
+                alert('Ошибка! Скрипт не найден..');
+            }
+
+            var script = scripts[id];
+            // document.execCommand(script.code);
+            copy(script.code);
+        });
+    }
+
+    function copy(str){
+        let tmp   = document.createElement('INPUT'), // Создаём новый текстовой input
+            focus = document.activeElement; // Получаем ссылку на элемент в фокусе (чтобы не терять фокус)
+
+        tmp.value = str; // Временному input вставляем текст для копирования
+
+        document.body.appendChild(tmp); // Вставляем input в DOM
+        tmp.select(); // Выделяем весь текст в input
+        document.execCommand('copy'); // Магия! Копирует в буфер выделенный текст (см. команду выше)
+        document.body.removeChild(tmp); // Удаляем временный input
+        focus.focus(); // Возвращаем фокус туда, где был
     }
 
 
@@ -190,7 +231,8 @@ $(document).ready(function() {
             for (var key in scripts) {
                 var element = $('<div class="scripts-list_item">' +
                     '<span class="title">' + scripts[key].name + '</span>' +
-                    '<span class="delete"></span>' +
+                    '<span class="delete" title="Удалить"></span>' +
+                    '<span class="copy"  title="Скопировать текст"></span>' +
                     '</div>');
 
                 element.attr('data-tag', scripts[key]['tag']);
@@ -253,6 +295,13 @@ $(document).ready(function() {
         $("#listContainer .scripts-list_item .delete").click(function(e) {
             actionDeleteScript(e);
         }) ;
+
+        /**
+         * Кнопка: копировать
+         */
+        $("#listContainer .scripts-list_item .copy").on('click', function(e) {
+            actionCopyTextScript(e);
+        });
     }
 
     function registerItemListTags()
