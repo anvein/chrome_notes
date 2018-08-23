@@ -270,29 +270,26 @@ $(document).ready(function() {
      * Фильтрация элементов по активным тегам
      */
     function filterListItems() {
-        alert('11');
-        var activeTags = $('#tagsList .active');
+        var activeTag = $('#tagsList .active');
 
         var listItems = $('#listContainer .scripts-list_item');
         if (listItems.length === 0) {
             return;
         }
 
-        if (activeTags.length === 0) {
-            for (var keyItem in listItems) {
-                listItems[keyItem].removeClass('hide');
-            }
+        if (activeTag.length === 0) {
+            listItems.each(function(ind, element) {
+                element.classList.remove('hide');
+            });
         } else {
-            if  (listItems.length > 0) {
-                for (var keyItem in listItems) {
-                    // alert(listItems[keyItem].innerHTML);
-                    if (listItems[keyItem].attr('data-tag').length > 0 && activeTags.indexOf(listItems[keyItem].getAttribute('data-tag')) !== -1) {
-                        listItems[keyItem].removeClass('hide');
-                    } else {
-                        listItems[keyItem].addClass('hide');
-                    }
+            listItems.each(function(ind, element) {
+                if (element.getAttribute('data-tag') !== activeTag.attr('data-tag')) {
+                    element.classList.add('hide');
+                } else {
+                    element.classList.remove('hide');
                 }
-            }
+
+            });
         }
     }
 
@@ -306,21 +303,19 @@ $(document).ready(function() {
         var nowTagEl = $(e.target);
         var nowTagKey = nowTagEl.attr('data-tag');
 
-
-        for (var tagKey in tags) {
-            // if (tags[tagKey].getAttribute('data-tag').length === 0) {
-            //     continue;
-            // }
-
-            // todo: тут какая-то ошибка с перебором массива
-            if (nowTagKey === tags[tagKey].getAttribute('data-tag')) {
+        tags.each(function(ind, element) {
+            if (nowTagKey === element.getAttribute('data-tag')) {
                 if (nowTagEl.hasClass('active')) {
                     nowTagEl.removeClass('active');
                 } else {
                     nowTagEl.addClass('active');
                 }
+            } else {
+                if (element.classList.contains('active')) {
+                    element.classList.remove('active');
+                }
             }
-        }
+        });
     }
 
     /**
