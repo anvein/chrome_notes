@@ -1,4 +1,4 @@
-# Chrome Notes
+# Fast Notes
 
 Расширение для Google Chrome, которое хранит заметки.
 
