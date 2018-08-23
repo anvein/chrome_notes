@@ -4,7 +4,7 @@ body {
 }
 
 #mainContainer {
-	width: 350px;
+	width: 500px;
 	height: 450px;
 	overflow: hidden;
 	/*background-color: #f0f8ff;*/
@@ -206,7 +206,7 @@ a:hover {
 #addingScript {
 	position: absolute;
 	top: 0;
-	left: -357px;
+	left: -500px;
 	height: inherit;
 	width: inherit;
 
@@ -235,14 +235,15 @@ a:hover {
 }
 
 #addingScript #scriptTag {
-	height: 30px;
-	width: calc(100% - 10px);
+	height: 37px;
+	width: 100%;
 	font-size: 16px;
-	line-height: 35px;
+	line-height: 37px;
 	outline: none;
 	margin-top: -5px;
 	padding-left: 5px;
 	padding-right: 5px;
+	box-sizing: border-box;
 	color: #004AFF;
 }
 
