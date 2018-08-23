@@ -38,6 +38,7 @@ $(document).ready(function() {
         addingScreen.find('#scriptName').val('');
         addingScreen.find('#scriptCode').val('');
         addingScreen.find('#scriptTag').val('');
+        addingScreen.find('#scriptId').val('');
     }
 
     /**
@@ -62,7 +63,7 @@ $(document).ready(function() {
         var id = addingScreen.find("#scriptId").val();
 
         if (title.length === 0) {
-            alert('Не указано название скрипта');
+            alert('Не указано название');
             return;
         }
 
@@ -103,7 +104,7 @@ $(document).ready(function() {
      */
     function actionDeleteScript(e)
     {
-        var confirmDelete = confirm('Удалить скрипт?');
+        var confirmDelete = confirm('Удалить заметку?');
         if (!confirmDelete) {
            return;
         }
@@ -114,14 +115,14 @@ $(document).ready(function() {
             if (obj.scripts != null) {
                 scripts = obj.scripts;
             } else {
-                alert('Ошибка! Скрипт не найден..');
+                alert('Ошибка! Заметка не найдена..');
                 return;
             }
 
             var id = e.target.parentNode.getAttribute('data-id');
 
             if (scripts[id] === null) {
-                alert('Ошибка! Скрипт не найден..');
+                alert('Ошибка! Заметка не найдена..');
             }
 
             delete scripts[id];
@@ -149,14 +150,14 @@ $(document).ready(function() {
             if (obj.scripts != null) {
                 scripts = obj.scripts;
             } else {
-                alert('Ошибка! Скрипт не найден..');
+                alert('Ошибка! Заметка не найдена..');
                 return;
             }
 
             var id = e.target.parentNode.getAttribute('data-id');
 
             if (scripts[id] === null) {
-                alert('Ошибка! Скрипт не найден..');
+                alert('Ошибка! Заметка не найдена..');
             }
 
             var script = scripts[id];
@@ -181,18 +182,17 @@ $(document).ready(function() {
             if (obj.scripts != null) {
                 scripts = obj.scripts;
             } else {
-                alert('Ошибка! Скрипт не найден..');
+                alert('Ошибка! Заметка не найдена..');
                 return;
             }
 
             var id = e.target.parentNode.getAttribute('data-id');
 
             if (scripts[id] === null) {
-                alert('Ошибка! Скрипт не найден..');
+                alert('Ошибка! Заметка не найдена..');
             }
 
             var script = scripts[id];
-            // document.execCommand(script.code);
             copy(script.code);
         });
     }
@@ -285,22 +285,22 @@ $(document).ready(function() {
         /**
          * Кнопка: правка элемента
          */
-        $("#listContainer .scripts-list_item .title").on('dblclick', function(e) {
-            actionToEditScript(e);
+        $("#listContainer .scripts-list_item .title").on('dblclick', function(e1) {
+            actionToEditScript(e1);
         });
 
         /**
          * Action: удаление элемента
          */
-        $("#listContainer .scripts-list_item .delete").click(function(e) {
-            actionDeleteScript(e);
+        $("#listContainer .scripts-list_item .delete").on('click', function(e2) {
+            actionDeleteScript(e2);
         }) ;
 
         /**
          * Кнопка: копировать
          */
-        $("#listContainer .scripts-list_item .copy").on('click', function(e) {
-            actionCopyTextScript(e);
+        $("#listContainer .scripts-list_item .copy").on('click', function(e3) {
+            actionCopyTextScript(e3);
         });
     }
 
